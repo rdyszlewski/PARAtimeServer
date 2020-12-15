@@ -1,13 +1,14 @@
 package com.parabbits.PARAtime.persistence.project;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import com.parabbits.PARAtime.persistence.models.Status;
+import com.parabbits.PARAtime.persistence.shared.Order;
+
+import javax.persistence.*;
 import java.sql.Date;
 
 @Entity
-public class Project {
+@Table(name = "projects")
+public class Project extends Order {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -18,16 +19,21 @@ public class Project {
     private Date startDate;
     private Date endDate;
 
+    @Enumerated(EnumType.ORDINAL)
+    private ProjectType type;
 
-//    TODO: rozwiązać jakoś problem z kolejnością
+    @Enumerated(EnumType.ORDINAL)
+    private Status status;
+
+    // TODO: wstawić usera
+    // TODO: wstawić kolejność
 
     public Project(){
 
     }
 
-    public Project(String name, String description){
+    public Project(String name){
         this.name = name;
-        this.description = description;
     }
 
     public Long getId() {
@@ -52,5 +58,37 @@ public class Project {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    public Date getStartDate() {
+        return startDate;
+    }
+
+    public void setStartDate(Date startDate) {
+        this.startDate = startDate;
+    }
+
+    public Date getEndDate() {
+        return endDate;
+    }
+
+    public void setEndDate(Date endDate) {
+        this.endDate = endDate;
+    }
+
+    public ProjectType getType() {
+        return type;
+    }
+
+    public void setType(ProjectType type) {
+        this.type = type;
+    }
+
+    public Status getStatus() {
+        return status;
+    }
+
+    public void setStatus(Status status) {
+        this.status = status;
     }
 }

@@ -1,0 +1,9 @@
+CREATE TABLE IF NOT EXISTS project_types(
+    id INT PRIMARY KEY,
+    name VARCHAR(10) NOT NULL
+);
+
+CREATE TABLE IF NOT EXISTS status(
+    id INT PRIMARY KEY,
+    name VARCHAR(10) NOT NULL
+);

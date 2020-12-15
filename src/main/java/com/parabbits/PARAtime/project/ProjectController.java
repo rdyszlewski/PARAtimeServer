@@ -1,14 +1,15 @@
 package com.parabbits.PARAtime.project;
 
+import com.parabbits.PARAtime.persistence.project.InsertProjectDTO;
 import com.parabbits.PARAtime.persistence.project.Project;
 import com.parabbits.PARAtime.persistence.project.ProjectRepository;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
-import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class ProjectController {
 
@@ -16,8 +17,16 @@ public class ProjectController {
     private ProjectRepository projectRepository;
 
     @GetMapping("/projects")
-    public List<Project> all(){
-        return projectRepository.findAll();
+    public List<ProjectDTO> getAll(){
+        List<Project> projects = projectRepository.findAll();
+        return projects.stream().map(ProjectAdapter::entityToDto).collect(Collectors.toList());
+    }
+
+    @PostMapping("/projects")
+    public InsertProjectDTO insert(@RequestBody ProjectDTO projectDTO){
+        Project project = ProjectAdapter.dtoToEntity(projectDTO);
+        Project insertedProject = projectRepository.save(project);
+        return new InsertProjectDTO(insertedProject);
     }
 
 }
