@@ -1,13 +1,26 @@
 package com.parabbits.PARAtime.persistence.shared;
 
-import javax.persistence.MappedSuperclass;
+import javax.persistence.*;
+import java.io.Serializable;
 
 @MappedSuperclass
-public class Order {
+public abstract class Order implements Serializable {
 
-    protected Long successor;
-    protected boolean head;
-    protected Long orderValue;
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private Long successor;
+    private boolean head;
+    private Long orderValue;
+
+    public Long getId() {
+        return id;
+    }
+
+    public void setId(Long id) {
+        this.id = id;
+    }
 
     public Long getSuccessor() {
         return successor;

@@ -14,6 +14,8 @@ public class ProjectDTO {
     private Date endDate;
     private Status status;
     private ProjectType type;
+    private Long successor;
+    private boolean head;
 
     public ProjectDTO(Long id, String name, Status status){
         this.id = id;
@@ -75,5 +77,21 @@ public class ProjectDTO {
 
     public void setType(ProjectType type) {
         this.type = type;
+    }
+
+    public Long getSuccessor() {
+        return successor;
+    }
+
+    public void setSuccessor(Long successor) {
+        this.successor = successor;
+    }
+
+    public boolean isHead() {
+        return head;
+    }
+
+    public void setHead(boolean head) {
+        this.head = head;
     }
 }

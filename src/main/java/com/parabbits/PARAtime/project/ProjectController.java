@@ -18,8 +18,9 @@ public class ProjectController {
 
     @GetMapping("/projects")
     public List<ProjectDTO> getAll(){
-        List<Project> projects = projectRepository.findAll();
-        return projects.stream().map(ProjectAdapter::entityToDto).collect(Collectors.toList());
+        List<Project> projects = (List<Project>) projectRepository.findAll();
+        List<ProjectDTO> results = projects.stream().map(ProjectAdapter::entityToDto).collect(Collectors.toList());
+        return results;
     }
 
     @PostMapping("/projects")
@@ -28,5 +29,4 @@ public class ProjectController {
         Project insertedProject = projectRepository.save(project);
         return new InsertProjectDTO(insertedProject);
     }
-
 }

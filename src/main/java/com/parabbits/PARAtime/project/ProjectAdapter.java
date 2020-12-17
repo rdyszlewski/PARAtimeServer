@@ -12,6 +12,9 @@ public class ProjectAdapter {
         project.setEndDate(projectDTO.getEndDate());
         project.setStatus(projectDTO.getStatus());
         project.setType(projectDTO.getType());
+
+        project.setHead(projectDTO.isHead());
+        project.setSuccessor(projectDTO.getSuccessor());
         // TODO: pomyśleć jak zrobić z informacjami o kolejności
         return project;
     }
@@ -22,6 +25,8 @@ public class ProjectAdapter {
         dto.setStartDate(project.getStartDate());
         dto.setEndDate(project.getEndDate());
         dto.setType(project.getType());
+        dto.setSuccessor(project.getSuccessor());
+        dto.setHead(project.isHead());
 
         return dto;
     }
