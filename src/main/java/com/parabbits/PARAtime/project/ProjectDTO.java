@@ -17,6 +17,10 @@ public class ProjectDTO {
     private Long successor;
     private boolean head;
 
+    public ProjectDTO(){
+
+    }
+
     public ProjectDTO(Long id, String name, Status status){
         this.id = id;
         this.name = name;

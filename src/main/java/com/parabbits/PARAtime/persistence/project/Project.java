@@ -5,6 +5,7 @@ import com.parabbits.PARAtime.persistence.shared.Order;
 
 import javax.persistence.*;
 import java.sql.Date;
+import java.util.Objects;
 
 @Entity
 @Table(name = "projects")
@@ -78,5 +79,23 @@ public class Project extends Order {
 
     public void setStatus(Status status) {
         this.status = status;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        Project project = (Project) o;
+        return name.equals(project.name) &&
+                Objects.equals(description, project.description) &&
+                Objects.equals(startDate, project.startDate) &&
+                Objects.equals(endDate, project.endDate) &&
+                type == project.type &&
+                status == project.status;
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(name, description, startDate, endDate, type, status);
     }
 }

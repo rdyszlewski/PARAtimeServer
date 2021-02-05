@@ -1,34 +1,36 @@
 package com.parabbits.PARAtime.persistence.project;
 
 import com.parabbits.PARAtime.persistence.kanban_column.KanbanColumn;
+import com.parabbits.PARAtime.project.ProjectDTO;
 
 import java.util.ArrayList;
 import java.util.List;
 
 public class InsertProjectDTO {
 
-    private Project insertedProject;
-    private List<Project> updatedProject = new ArrayList<>();
+    private ProjectDTO insertedProject;
+    private List<ProjectDTO> updatedProject = new ArrayList<>();
+    // TODO: tutaj zmienić typ danych na DTO
     private KanbanColumn insertedKanbanColumn;
     private List<KanbanColumn> updatedKanbanColumns = new ArrayList<>();
 
-    public InsertProjectDTO(Project insertedProject){
+    public InsertProjectDTO(ProjectDTO insertedProject){
         this.insertedProject = insertedProject;
     }
 
-    public Project getInsertedProject() {
+    public ProjectDTO getInsertedProject() {
         return insertedProject;
     }
 
-    public void setInsertedProject(Project insertedProject) {
+    public void setInsertedProject(ProjectDTO insertedProject) {
         this.insertedProject = insertedProject;
     }
 
-    public List<Project> getUpdatedProject() {
+    public List<ProjectDTO> getUpdatedProject() {
         return updatedProject;
     }
 
-    public void setUpdatedProject(List<Project> updatedProject) {
+    public void setUpdatedProject(List<ProjectDTO> updatedProject) {
         this.updatedProject = updatedProject;
     }
 
